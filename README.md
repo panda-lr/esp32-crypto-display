@@ -35,7 +35,7 @@ Software:
 
 - Arduino IDE with the Arduino_GFX_Library installed
 - WiFi credentials (SSID and password)
-- API key for the cryptocurrency price API (By default using [api-ninjas](https://api-ninjas.com/))
+- API key for the cryptocurrency price API (By default using [binance](https://www.binance.com/))
 
 # Installation
 
