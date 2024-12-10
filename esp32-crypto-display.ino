@@ -44,7 +44,7 @@ void drawHeader() {
   gfx->setTextColor(WHITE);
   gfx->setTextSize(2);
   gfx->setCursor(10, 5);
-  gfx->println("Crypto Prices /USDT 15min");
+  gfx->println("Crypto Prices /USDT 1hr");
 }
 
 void connectToWiFi() {
