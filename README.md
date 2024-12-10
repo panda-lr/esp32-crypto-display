@@ -4,7 +4,7 @@ This project displays the current prices of popular cryptocurrencies on an ESP32
 
 By default it supports displaying prices for Bitcoin (BTC), Ethereum (ETH), Solana (SOL), Dogecoin (DOGE), and PEPE.
 
-![Alt text](https://utfs.io/f/tZrGIXv7R3NpotuoyqHtC0DoNsxZimSPOchnJwgMF7ypz8vE)
+![Alt text](https://utfs.io/f/tZrGIXv7R3Npr3rCzhMKvHMOLbISWJni5XQzZ39T6xkNaPFy)
 
 **Features:**
 
