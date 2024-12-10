@@ -13,9 +13,10 @@ Arduino_GFX *gfx = new Arduino_ST7789(bus, 1 /* RST */, 1 /* rotation */, true /
 
 const char* symbols[] = {"BTC", "ETH", "SOL", "DOGE", "PEPE"};
 const char* fullSymbols[] = {"BTCUSDT", "ETHUSDT", "SOLUSDT", "DOGEUSDT", "PEPEUSDT"};
-const char* ssid = "YOUR-SSID";
-const char* password = "YOUR-PASSWORD";
-const char* apiKey = "YOUR-API-KEY";
+const char* ssid = "your-SSID";
+const char* password = "your-password";
+const char* apiKey = "your-key"; // Replace with your Binance API key
+const char* secretKey = "your-secret"; // Replace with your Binance Secret key
 
 WiFiClientSecure client;
 HTTPClient http;
@@ -44,7 +45,7 @@ void drawHeader() {
   gfx->setTextColor(WHITE);
   gfx->setTextSize(2);
   gfx->setCursor(10, 5);
-  gfx->println("Crypto Prices /USDT 1hr");
+  gfx->println("Crypto Prices /USDT 5min");
 }
 
 void connectToWiFi() {
@@ -92,10 +93,11 @@ bool fetchCryptoPrices(String& errorMessage) {
 
   for (int i = 0; i < itemCount; i++) {
     String symbol = fullSymbols[i];
-    String serverName = "https://api.api-ninjas.com/v1/cryptoprice?symbol=" + symbol;
+    String serverName = "https://api.binance.com/api/v3/ticker/price?symbol=" + symbol;
 
     http.begin(client, serverName);
-    http.addHeader("X-Api-Key", apiKey);
+    http.addHeader("X-MBX-APIKEY", apiKey); // Binance API Key
+    http.addHeader("X-MBX-APISECRET", secretKey); // Binance Secret Key
 
     int httpCode = http.GET();
 
@@ -177,6 +179,6 @@ void loop() {
     displayErrorMessage("NO WIFI");
   }
 
-  // Refresh every 1 hour (3600 seconds)
-  delay(3600000);
+  // Refresh every 5 minutes (300 seconds)
+  delay(300000);
 }

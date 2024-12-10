@@ -17,7 +17,7 @@ Dynamic Decimal Precision:
   
 Real-time Updates:
 
-  - Fetches the latest prices every 1 hour  
+  - Fetches the latest prices every 5 mins 
   - Displays percentage change from the previous price
 
 Error Handling:
