@@ -2,9 +2,9 @@
 
 This project displays the current prices of popular cryptocurrencies on an ESP32 using an ST7789 TFT screen. It connects to WiFi, fetches cryptocurrency prices from an API, and displays them on the screen with dynamic decimal precision. 
 
-By default it supports displaying prices for Bitcoin (BTC), Ethereum (ETH), Solana (SOL), Dogecoin (DOGE), and PEPE.
+By default it supports displaying prices for Bitcoin (BTC), Ethereum (ETH), Solana (SOL), Dogecoin (DOGE), and Kaspa (KAS).
 
-![Alt text](https://utfs.io/f/tZrGIXv7R3Npr3rCzhMKvHMOLbISWJni5XQzZ39T6xkNaPFy)
+![ESP32-S3 ST7789](https://utfs.io/f/tZrGIXv7R3Npr3rCzhMKvHMOLbISWJni5XQzZ39T6xkNaPFy)
 
 **Features:**
 
@@ -35,7 +35,7 @@ Software:
 
 - Arduino IDE with the Arduino_GFX_Library installed
 - WiFi credentials (SSID and password)
-- API key for the cryptocurrency price API (By default using [binance](https://www.binance.com/))
+- API Keys not longer needed as updated to use [kraken]((https://www.kraken.com/))
 
 # Installation
 
