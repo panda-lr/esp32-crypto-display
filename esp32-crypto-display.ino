@@ -19,7 +19,7 @@ const char* password = "YOUR-PASSWORD";
 WiFiClientSecure client;
 HTTPClient http;
 
-float previousPrices[5] = {0.0, 0.0, 0.0, 0.0, 0.0}; // Store previous prices for max 5 symbols
+float previousPrices[5] = {-1.0, -1.0, -1.0, -1.0, -1.0}; // Initialize to invalid value (-1.0)
 
 // Colors
 #define BLACK gfx->color565(0, 0, 0)
@@ -62,7 +62,7 @@ void drawHeader() {
   gfx->setTextColor(WHITE);
   gfx->setTextSize(2);
   gfx->setCursor(10, 5);
-  gfx->println("Crypto Prices USD 5min");
+  gfx->println("Crypto Prices USD");
 }
 
 // Connect to WiFi
@@ -161,18 +161,27 @@ bool fetchCryptoPrices(String& errorMessage) {
         xPosition += priceBoxWidth;
         gfx->drawRect(xPosition, yPosition, percentageBoxWidth, boxHeight, WHITE);
         gfx->setCursor(xPosition + 5, yPosition + 5);
+
+        // Percentage calculation
         float prevPrice = previousPrices[i];
         if (prevPrice > 0.0) {
           float percentageChange = ((price - prevPrice) / prevPrice) * 100.0;
           if (percentageChange >= 0) {
-            gfx->setTextColor(percentageChange >= 0 ? GREEN : RED);
-            gfx->printf(percentageChange >= 0 ? "+%.2f%%" : "%.2f%%", percentageChange);
+            gfx->setTextColor(GREEN);
+            gfx->printf("+%.2f%%", percentageChange);
+          } else {
+            gfx->setTextColor(RED);
+            gfx->printf("%.2f%%", percentageChange);
           }
+        } else {
+          gfx->setTextColor(GREY);
+          gfx->print("N/A");
         }
 
         // Update previous price
         previousPrices[i] = price;
 
+        gfx->setTextColor(WHITE); // Reset text color
         anyPriceObtained = true;
       }
     }
@@ -206,5 +215,5 @@ void loop() {
     displayErrorMessage("NO WIFI");
   }
 
-  delay(300000); // Update every 15 minutes (900000)
+  delay(300000); // Update every 5 minutes
 }
